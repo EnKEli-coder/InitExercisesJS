@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ejercicios iniciales en JS</title>
+    <!--1. Hola mundo!-->
+    <script language="javascript">
+        alert("Hola mundo!")
+    </script>
+    <link rel="stylesheet" href="index.css">
+   
+  </head>
+  <body>
+        <h1>Ejercicios iniciales en JavaScript</h1>
+        <p>Doble click para mostrar mensaje de alerta</p>
+        
+
+        <!--Mensaje de alerta-->
+        <button ondblclick="alerta()">
+            Alerta
+        </button>
+
+        <hr>
+
+        <p>Introduzca un número</p>
+
+        <!--Validación tipo numérico-->
+        <input type="text" name="numero" id="numero" value="" class="data" required
+            onKeyUp="javascript:validarNumero(this.value)" />
+
+        <hr>
+
+        <p>Introduzca un correo electrónico</p>
+
+        <!--Validación de correo electrónico-->
+        <input type="text" name="email" id="email"   value=""  class="data" required onKeyUp="javascript:validarEmail('email')" />
+
+        <hr>
+        
+        <!--Validación de fecha-->
+        <p>Ingresa una fecha: dd-mm-yyyy</p>
+        <input id="fecha">
+        <button type="button" onclick="validarFecha()">Enviar</button>
+
+        <hr>
+
+        <p>Encendido y apagado de un foco</p>
+
+        <img id="myImage" src="img/bulb_Off.jpg" style="width: 100px;" alt="foco"/>
+        <button onclick="document.getElementById('myImage').src='img/bulb_On.jpg'">Encender</button>
+        <button onclick="document.getElementById('myImage').src='img/bulb_off.jpg'">Apagar</button> 
+
+        <script>
+            function alerta(){
+                alert("Esto es una alerta!");
+            }
+            function validarNumero(numero){
+                if (!/^-?[0-9]\d*(\.\d+)?$/.test(numero))
+                    alert("El valor " + numero + " no es un número.");
+            }
+            function validarEmail(email)
+            {
+
+            inputVal= document.getElementById(email);
+            valor = inputVal.value;
+
+            //Patron de correo electrónico
+            var patron = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            if(valor.search(patron) == 0)
+            {
+                //email correcto
+                inputVal.style.color = "#000";
+                return;
+            }
+                //email incorrecto
+                inputVal.style.color = "#f00";
+            }
+            function validarFecha()
+            {
+                var date_regex = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
+                var fecha = document.getElementById("fecha").value;
+                if (date_regex.test(fecha)) 
+                {
+                    alert("Fecha correcta")
+                }else{
+                    alert("Fecha incorrecta")
+                     }
+            }
+
+        </script>
+        <!--Mensaje por si el navegador no admita JS o lo tenga deshabilitado-->
+        <noscript>Tu navegador no admite JavaScript, o JavaScript esta deshabilitado.</noscript>
+
+
+  </body>
+
+  </html>
